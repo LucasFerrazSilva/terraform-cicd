@@ -5,10 +5,6 @@ on:
     branches:
       - develop
 
-permissions:
-      id-token: write   # This is required for requesting the JWT
-      contents: read 
-
 jobs:
   terraform:
     uses: ./.github/workflows/terraform.yml
