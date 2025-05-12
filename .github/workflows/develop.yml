@@ -1,0 +1,15 @@
+name: "Dev Deploy"
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  terraform:
+    uses: ./.github/workflows/terraform.yml
+    with:
+      environment: dev
+      aws-statefile-s3-bucket: "terraform-cicd-statefile"
+      aws-lock-dynamodb-table: "terraform-cicd-lock"
+      
