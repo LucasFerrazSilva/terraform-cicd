@@ -47,7 +47,11 @@ jobs:
       
       - name: Terraform Init
         run: |
-          cd infra && terraform init -backend-config="dynamodb_table=${{ inputs.aws-lock-dynamodb-table }}" 
+          cd infra && terraform init \
+            -backend-config="bucket=terraform-cicd-statefile" \
+            -backend-config="key=${{ github.event.repositoy.name }}" \
+            -backend-config="region=us-east-1" \
+            -backend-config="dynamodb_table=${{ inputs.aws-lock-dynamodb-table }}" 
         
       - name: Terraform Validate
         run: cd infra && terraform validate
