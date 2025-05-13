@@ -10,7 +10,6 @@ jobs:
     uses: ./.github/workflows/terraform.yml
     with:
       environment: dev
-      aws-statefile-s3-bucket: "terraform-cicd-statefile"
       aws-lock-dynamodb-table: "terraform-cicd-lock"    
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
